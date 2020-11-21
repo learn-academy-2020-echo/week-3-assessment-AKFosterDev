@@ -4,7 +4,7 @@
 
 // create a function
 const fibonacci = () => {
-	// create a veriable to hold returned values
+	// create a variable to hold returned values
 	let result = [0, 1]
 	// create loop to create fibonacci sequence and add to new array
 	for (let i = 2; i <= 10; i++) {
@@ -49,24 +49,70 @@ let middleLetters2 = 'rhinoceros' // Expected output: “oc”
 const middleCharFinder = (str) => {
 	// create variable that holds the string argument converted to an array
 	let strArray = str.split('')
+
 	// create variable that holds the middle
+	let middle = strArray[Math.floor(strArray.length / 2)]
 
 	// if string has an even number of characters
 	if (strArray.length % 2 === 0) {
-		// return two middle letters as a string
-		return str[Math.floor(str.length / 2)]
+		// create variable to hold the index of the first of the middle two numbers
+		let firstOfMiddleIndex = strArray.length / 2 - 1
+		// return two middle letters
+		return strArray[firstOfMiddleIndex] + middle
 	} else {
-		// if string has an odd number of characters return middle letter as a string
+		// if string has an odd number of characters return middle letter only
+		return middle
 	}
 }
 
 // call the function
 console.log('Problem #3')
+console.log(middleCharFinder(middleLetters1))
+console.log(middleCharFinder(middleLetters2))
 
 // --------------------4) READ CAREFULLY: Create a CLASS to get the area of a sphere. Create THREE spheres with different radi as test cases. Area of a sphere =  4πr^2 (four * pi * radi squared)
+
+//create a class
+class SphereArea {
+	constructor(radius) {
+		this.radius = radius * radius
+	}
+
+	// create a method that calculates the area of a sphere
+	calculateArea() {
+		return 4 * Math.PI * this.radius
+	}
+}
+
+// create three spheres from new class
+const sphere1 = new SphereArea(2) // 50.27
+const sphere2 = new SphereArea(7) // 615.75
+const sphere3 = new SphereArea(10) // 1256.64
+
+console.log('Problem #4')
+console.log(sphere1.calculateArea())
+console.log(sphere2.calculateArea())
+console.log(sphere3.calculateArea())
 
 // --------------------5) Create a function that takes in an array and returns an array of the accumulating sum. An empty array should return an empty array.
 
 let numbersToAdd1 = [2, 4, 45, 9] // Excpected output: [2, 6, 51, 60]
 let numbersToAdd2 = [0, 7, -8, 12] // Expected output: [0, 7, -1, 11]
 let numbersToAdd3 = [] // Expected output: []
+
+// Create a function that takes an array of numbers as an argument
+const accumulatingArray = (arr) => {
+	// create a variable to hold the resulting addition
+	let result = 0
+	let resultsArray = arr.map((value) => {
+		return (result = result + value)
+	})
+	// return an array of the accumulating sum
+	return resultsArray
+}
+
+// call the function
+console.log('Problem #5')
+console.log(accumulatingArray(numbersToAdd1))
+console.log(accumulatingArray(numbersToAdd2))
+console.log(accumulatingArray(numbersToAdd3))
